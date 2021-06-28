@@ -1,0 +1,21 @@
+name: Deploy to server
+
+on:
+  push:
+    branches: [ master ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avhzr --delete --exclude=".git" --exclude=".github"
+          remote_path: /var/www/aia-nodejs-fullstack-engineer-backend/
+          remote_host: 62.171.152.157
+          remote_port: 32780
+          remote_user: root
+          remote_key: ${{ secrets.SERVER_KEY }}
