@@ -9,9 +9,19 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/list', async (req, res) => {
+app.get('/t', (req, res) => {
+    console.log(req)
+    res.send("hola")
+})
+
+app.get('/list', async ({ query }, res) => {
+    let feedURL = new URL('https://www.flickr.com/services/feeds/photos_public.gne')
+    if ('tags' in query) {
+        feedURL.searchParams.append('tags', query.tags)
+    }
+    
     try {
-        let xmlResult = await fetch('https://www.flickr.com/services/feeds/photos_public.gne')
+        let xmlResult = await fetch(feedURL.href)
             .then(res => res.text())
 
         let json = parser.toJson(xmlResult, {
