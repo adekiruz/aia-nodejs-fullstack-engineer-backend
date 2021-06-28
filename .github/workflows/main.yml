@@ -13,7 +13,7 @@ jobs:
       - name: rsync deployments
         uses: burnett01/rsync-deployments@4.1
         with:
-          switches: -avhzr --delete --exclude=".git" --exclude=".github"
+          switches: -avhzr --exclude=".git" --exclude=".github"
           remote_path: /home/jamhari/projects/aia-nodejs-fullstack-engineer-backend/
           remote_host: 62.171.152.157
           remote_port: 32780
