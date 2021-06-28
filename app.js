@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/list', async ({ query }, res) => {
+app.get('/flickr-photos-feed', async ({ query }, res) => {
     let feedURL = new URL('https://www.flickr.com/services/feeds/photos_public.gne')
     if ('tags' in query) {
         feedURL.searchParams.append('tags', query.tags)
