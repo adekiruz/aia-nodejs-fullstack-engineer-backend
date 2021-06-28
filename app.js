@@ -9,11 +9,6 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/t', (req, res) => {
-    console.log(req)
-    res.send("hola")
-})
-
 app.get('/list', async ({ query }, res) => {
     let feedURL = new URL('https://www.flickr.com/services/feeds/photos_public.gne')
     if ('tags' in query) {
