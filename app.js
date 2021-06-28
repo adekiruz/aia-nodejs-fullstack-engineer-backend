@@ -5,7 +5,7 @@ const parser = require('xml2json')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Yo! This should not the endpoint you are looking for :)')
 })
 
 app.get('/flickr-photos-feed', async ({ query }, res) => {
